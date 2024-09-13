@@ -93,7 +93,13 @@ if __name__=='__main__':
             grabResult = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
             if grabResult.GrabSucceeded():
                 # Access the image data.
-                img = cv2.cvtColor(grabResult.Array, cv2.COLOR_BAYER_RG2RGB)
+                Converter = pylon.ImageFormatConverter()
+                Converter.OutputPixelFormat = pylon.PixelType_BGR8packed
+                Converter.OutputBitAlignment = pylon.OutputBitAlignment_MsbAligned
+                img = Converter.Convert(grabResult)
+                img = img.GetArray()
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # 转换颜色空间从BGR到
+                print(img)
                 cv2.imshow('Grabbed Image', cv2.resize(img,None,None,fx=0.2,fy=0.2))
                 k=cv2.waitKey(1)
                 if(k==ord('s') or k==ord('S')):

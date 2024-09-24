@@ -1,0 +1,5 @@
+#ignore `Samples` folder
+Samples/
+LabX_Group3/
+.DS_Store
+Requirements/

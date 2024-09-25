@@ -7,7 +7,7 @@ gain_images = []
 gains = []
 for i in range(0, 98):
     i = i/10
-    image = cv2.imread(f'gain/gain_{i}.png', cv2.IMREAD_GRAYSCALE)  # 加载为灰度图
+    image = cv2.imread(f'../Images/gain/gain_{i}.png', cv2.IMREAD_GRAYSCALE)  # 加载为灰度图
     image = image.astype(np.float32)  # 转换为浮点型以便后续处理
     gain_images.append(image)
     gains.append(i)

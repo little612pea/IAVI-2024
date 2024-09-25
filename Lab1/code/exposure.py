@@ -26,7 +26,7 @@ exposures = []
 lights = []
 
 for i in range(start, end, 2000):
-    file_name = f'exposure/exposure_2000_98000/exposure_{i}_us.png'
+    file_name = f'../Images/exposure/exposure_2000_98000/exposure_{i}_us.png'
     image = Image.open(file_name)
 
     # 将图像转换为RGB模式（可根据具体需求调整）

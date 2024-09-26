@@ -10,7 +10,11 @@ gains = []
 for i in range(0,98):
     i = i/10
     # 读取图像
-    image = cv2.imread(f'../Images/gain/gain_{i}.png', cv2.IMREAD_GRAYSCALE)
+    try:
+        image = cv2.imread(f'../Images/gain/gain_{i}.png', cv2.IMREAD_GRAYSCALE)
+    except Exception as e:
+        print(f'fail to open image gain_{i}.png')
+        continue
 
     # 应用高斯滤波（平滑图像）
     gaussian_filtered = cv2.GaussianBlur(image, (5, 5), 0)

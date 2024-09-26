@@ -4,7 +4,15 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 
 # 假设我们有多张同尺寸的图像存储在一个列表中
-image_list = [cv2.imread(f'../Images/noise/noise_{i}.png') for i in range(1, 50)]  # 读取图像
+image_list = []  # 读取图像
+
+for i in range(1,50):
+    try:   
+        image =  cv2.imread(f'../Images/noise/noise_{i}.png')
+        image_list.append(image)
+    except Exception as e:
+        print(f'fail to open image noise_{i}.png')
+        continue
 
 # 确保图像尺寸相同
 H, W, C = image_list[0].shape  # 获取图像的尺寸 (高度, 宽度, 通道数)

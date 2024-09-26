@@ -2,7 +2,6 @@ from PIL import Image
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 打开BMP文件
 start = 2000
 
 end = 98000
@@ -27,9 +26,13 @@ lights = []
 
 for i in range(start, end, 2000):
     file_name = f'../Images/exposure/exposure_2000_98000/exposure_{i}_us.png'
-    image = Image.open(file_name)
-
-    # 将图像转换为RGB模式（可根据具体需求调整）
+    try:
+        image = Image.open(file_name)
+    except Exception as e:
+        print(f"fail to open picture: exposure_{i}_us.png")
+        continue
+    
+    # 将图像转换为RGB模式
     image = image.convert('RGB')
 
     # 获取图像尺寸

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Rotation Example</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #f0f0f0, #d9e4f5); /* 使用渐变背景颜色 */
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 1200px; /* 增大宽度 */
+      height: 800px; /* 增大高度 */
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .container img {
+      width: 80%;
+      height: auto;
+      transform-style: preserve-3d;
+    }
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .controls label {
+      margin: 0 10px;
+    }
+    .controls input {
+      padding: 5px;
+      margin: 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100px;
+      text-align: center;
+    }
+    .controls button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="rotating-image" src="chessboard.png" alt="Example Image">
+  </div>
+  <div class="controls">
+    <label for="rotateX">Rotate X:</label>
+    <input type="number" id="rotateX" value="30">
+    <label for="rotateY">Rotate Y:</label>
+    <input type="number" id="rotateY" value="30">
+    <button id="rotate-button">Set Rotation</button>
+  </div>
+  <script>
+    document.getElementById('rotate-button').addEventListener('click', () => {
+      const rotateX = document.getElementById('rotateX').value;
+      const rotateY = document.getElementById('rotateY').value;
+      const image = document.getElementById('rotating-image');
+      image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+  </script>
+</body>
+</html>
